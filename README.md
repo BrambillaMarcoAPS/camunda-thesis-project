@@ -2,6 +2,7 @@
 Questo progetto consiste in un'applicazione Android (modulo “phone”) e in un’applicazione Wear OS (modulo “watch”) che collaborano per raccogliere e scambiare dati (come il livello di batteria e la temperatura) e integrano un motore BPMN tramite Camunda (usando Zeebe).
 
 CONTENUTI DEL PROGETTO:
+
 MODULO PHONE: codice Android principale (smartphone), che:
 -Avvia e gestisce i processi BPMN su Camunda Cloud.
 -Comunica col Wearable via Google Play Services / Wearable API per ricevere dati di batteria e temperatura dal watch.
@@ -15,6 +16,7 @@ MODULO WATCH: codice Wear OS, che:
 
 ------------------------------------------------------------------------------------------------------------------------
 MODULO PHONE
+
 MainActivity.java
 -Attiva la connessione con Zeebe tramite ZeebeConfig.createZeebeClient().
 -Avvia i Job Worker per gestire i compiti BPMN:
@@ -33,6 +35,7 @@ Classe di configurazione Zeebe che ritorna il ZeebeClient configurato, con le cr
 --------------------------------------------------------------------------------------------------------------------------
 
 MODULO WATCH (com.example.myapplication)
+
 MainActivity.java:
 -Riceve i messaggi dal telefono tramite l’API MessageClient e gestisce due tipologie di path:
 ---/request_battery: al ricevimento, legge la batteria del watch e risponde con /battery_message.
@@ -42,6 +45,7 @@ MainActivity.java:
 ---------------------------------------------------------------------------------------------------------------------------
 
 FLUSSO DI FUNZIONAMENTO
+
 1)Avvio Processo
 L'utente preme il pulsante “Start Process” nell’app telefono.
 Il metodo avviaProcesso() invoca zeebeClient.newCreateInstanceCommand() per avviare l’istanza BPMN definita da process_random_demo.
