@@ -95,7 +95,7 @@ public class MainActivity extends Activity
         }
 
 
-        return 22.5f;
+        return event.values[0];
     }
 
     private void replyTemperatureToPhone(float temperature, String nodeId) {
